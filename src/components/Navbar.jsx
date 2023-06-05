@@ -4,11 +4,13 @@ import {
   Badge,
   Box,
   InputBase,
+  Menu,
+  MenuItem,
   styled,
   Toolbar,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import FormatBoldSharpIcon from "@mui/icons-material/FormatBoldSharp";
 import { MailSharp, Notifications } from "@mui/icons-material";
 import AvatarImage from "./images/avatar.png";
@@ -46,6 +48,8 @@ const UserBox = styled(Box)(({ theme }) => ({
 }));
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <AppBar position="sticky" color="secondary">
       <StyledToolbar>
@@ -63,13 +67,40 @@ const Navbar = () => {
           <Badge badgeContent={1} color="error">
             <Notifications />
           </Badge>
-          <Avatar sx={{ width: 30, height: 30 }} src={AvatarImage} />
+          <Avatar
+            sx={{ width: 30, height: 30 }}
+            src={AvatarImage}
+            onClick={(e) => setOpen(true)}
+          />
         </Icons>
+        {/* Mobile Version */}
         <UserBox>
-          <Avatar sx={{ width: 30, height: 30 }} src={AvatarImage} />
+          <Avatar
+            sx={{ width: 30, height: 30 }}
+            src={AvatarImage}
+            onClick={(e) => setOpen(true)}
+          />
           <Typography variant="span">Bob</Typography>
         </UserBox>
       </StyledToolbar>
+      <Menu
+        id="demo-positioned-menu"
+        aria-labelledby="demo-positioned-button"
+        open={open}
+        onClose={(e) => setOpen(false)}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+      >
+        <MenuItem>Profile</MenuItem>
+        <MenuItem>My account</MenuItem>
+        <MenuItem>Logout</MenuItem>
+      </Menu>
     </AppBar>
   );
 };
