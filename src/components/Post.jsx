@@ -11,16 +11,13 @@ import {
 } from "@mui/material";
 import React from "react";
 import { Share, Favorite, MoreVert, FavoriteBorder } from "@mui/icons-material";
+import AvatarImage from "./images/avatar.png";
 
 const Post = () => {
   return (
-    <Card sx={{margin: 5}}>
+    <Card sx={{ margin: 5 }}>
       <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
-            R
-          </Avatar>
-        }
+        avatar={<Avatar src={AvatarImage} />}
         action={
           <IconButton aria-label="settings">
             <MoreVert />
